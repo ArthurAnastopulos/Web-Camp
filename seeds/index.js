@@ -22,10 +22,14 @@ const seedDB = async () => {
     await Campground.deleteMany({});
     for (let i = 0; i < 50; i++) {
         const rand = Math.floor(Math.random() * 1000);
+        const price = Math.floor(Math.random() * 25) + 10;
         const camp = new Campground({
             location: `${cities[rand].city}, ${cities[rand].state}`,
-            title: `${sample(descriptors)} ${sample(places)}`
-        })
+            title: `${sample(descriptors)} ${sample(places)}`,
+            image: 'https://source.unsplash.com/collection/483251',
+            description: 'The Nature is just like flowers in the forest, but camping is fire that will lit Nature true colors.',
+            price
+        });
         camp.save();
     }
 };
