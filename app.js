@@ -70,7 +70,7 @@ app.post('/campgrounds', validateCampground, catchAsync(async (req, res) => {
 }));
 
 app.get('/campgrounds/:id', catchAsync(async (req, res) => {
-    const campground = await Campground.findById(req.params.id);
+    const campground = await Campground.findById(req.params.id).populate('reviews');
     res.render('campgrounds/show', { campground });
 }));
 
@@ -97,7 +97,7 @@ app.post('/campgrounds/:id/reviews', validateReview, catchAsync(async (req, res)
     campground.reviews.push(review);
     await review.save();
     await campground.save();
-    res.redirect(`/campground/${campground._id}`);
+    res.redirect(`/campgrounds/${campground._id}`);
 }));
 
 app.all('*', (req, res, next) => {
