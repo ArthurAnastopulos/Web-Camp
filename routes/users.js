@@ -21,4 +21,13 @@ router.post('/register', catchAsync(async (req, res) => {
     }
 }));
 
+router.get('/login', (req, res) => {
+    res.render('users/login');
+});
+
+router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
+    req.flash('success', 'welcome back!');
+    res.redirect('/campgrounds');
+});
+
 module.exports = router;
