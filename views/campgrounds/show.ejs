@@ -10,6 +10,7 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-muted"><%= campground.location %></li>
+                <li class="list-group-item">Submited by <%= campground.author.username %></li>
                 <li class="list-group-item">$ <%= campground.price %>.00/night</li>
             </ul>
             <div class="card-body">
@@ -47,17 +48,3 @@
         <% } %>
     </div>
 </div>
-
-
-<!-- <h1> <%= campground.title %></h1>
-<h2><%= campground.location %></h2>
-<img src="<%= campground.image %>" alt="">
-<h3><%= campground.price %></h3>
-<p><%= campground.description %></p>
-<footer>
-    <a href="/campgrounds">All campgrounds</a>
-    <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-        <button>delete</button>
-    </form>
-    <a href="/campgrounds/<%= campground._id %>/edit  ">Edit</a>
-</footer> -->
