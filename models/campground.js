@@ -1,6 +1,6 @@
-const moongoose = require('mongoose');
-const Review = require('./review');
-const Schema = moongoose.Schema;
+const mongoose = require('mongoose');
+const Review = require('./review')
+const Schema = mongoose.Schema;
 
 const CampgroundSchema = new Schema({
     title: String,
@@ -18,7 +18,7 @@ const CampgroundSchema = new Schema({
             ref: 'Review'
         }
     ]
-})
+});
 
 CampgroundSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
@@ -30,5 +30,4 @@ CampgroundSchema.post('findOneAndDelete', async function (doc) {
     }
 })
 
-
-module.exports = moongoose.model('Campground', CampgroundSchema);
+module.exports = mongoose.model('Campground', CampgroundSchema);
