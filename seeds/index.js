@@ -21,7 +21,7 @@ const sample = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const seedDB = async () => {
     await Campground.deleteMany({});
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 300; i++) {
         const rand = Math.floor(Math.random() * 1000);
         const price = Math.floor(Math.random() * 25) + 10;
         const camp = new Campground({
@@ -30,6 +30,13 @@ const seedDB = async () => {
             title: `${sample(descriptors)} ${sample(places)}`,
             description: 'The Nature is just like flowers in the forest, but camping is fire that will lit Nature true colors.',
             price,
+            geometry: {
+                type: "Point",
+                coordinates: [
+                    cities[rand].longitude,
+                    cities[rand].latitude,
+                ]
+            },
             images: [
                 {
                     url: 'https://res.cloudinary.com/douqbebwk/image/upload/v1600060601/YelpCamp/ahfnenvca4tha00h2ubt.png',
